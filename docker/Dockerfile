@@ -7,6 +7,11 @@ ARG CUDA="118"
 ENV BNB_CUDA_VERSION=$CUDA
 ARG PYTORCH_VERSION="2.0.1"
 
+RUN mkdir -p /root/.pip && \
+    echo "[global]" > /root/.pip/pip.conf && \
+    echo "index-url = https://mirrors.aliyun.com/pypi/simple/" >> /root/.pip/pip.conf && \
+    echo "trusted-host = mirrors.aliyun.com" >> /root/.pip/pip.conf
+    
 ENV PYTORCH_VERSION=$PYTORCH_VERSION
 
 RUN apt-get update && \
